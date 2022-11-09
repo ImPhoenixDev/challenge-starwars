@@ -6,6 +6,7 @@ import Results from "../results/Results";
 
 import { useRouter } from "next/router";
 import { fetchSwapi } from "../../scripts/fetchSwapi";
+import ResourceSelector from "../resourceSelector/ResourceSelector";
 
 /**
  * This is the component for the list page
@@ -44,24 +45,18 @@ export default function List({ data }) {
     setResponseToDisplay(data);
   }, [searchValue, data]);
 
-  const link = "w-full h-full flex flex-col items-center justify-center p-4";
-  const listItemSelected =
-    "cursor-pointer border-solid border-2 border-greentxt shadow-sm shadow-greentxt rounded-md";
-  const listItem =
-    "cursor-pointer border-solid border-2 border-lime  text-lime rounded-md";
-
   return (
-    <div className="flex bg-gray-800 h-screen">
-      <div className="m-auto max-w-md overflow-scroll">
+    <div className="flex bg-gray-800">
+      <div className="flex flex-col m-auto max-w-md overflow-scroll">
         <Head>
           <title>Starwars challenge</title>
           <meta name="description" content="SWAPI front-end proyect" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <main className="main bg-white h-screen">
+        <main className="main bg-white min-h-max">
           <div className="main__info text-greentxt p-2">
-            <h1 className="text-2xl my-4">Welcome to starwars api challenge</h1>
+            <h1 className="text-4xl my-16 text-center">Welcome to starwars api challenge</h1>
 
             <p className="text-2xl my-4">
               Here you can search information from the universe of starwars
@@ -71,60 +66,11 @@ export default function List({ data }) {
             </p>
           </div>
 
-          <div className="resourcesOptions text-greentxt">
-            <ul className="grid grid-cols-3 grid-rows-3 gap-3 px-2">
-              <li
-                className={resource === "people" ? listItemSelected : listItem}
-              >
-                <Link href="/list/people/1" className={link}>
-                  <i className="swg swg-darthvader"></i>
-                  people
-                </Link>
-              </li>
-              <li
-                className={resource === "films" ? listItemSelected : listItem}
-              >
-                <Link href="/list/films/1" className={link}>
-                  films
-                </Link>
-              </li>
-              <li
-                className={
-                  resource === "starships" ? listItemSelected : listItem
-                }
-              >
-                <Link href="/list/starships/1" className={link}>
-                  starships
-                </Link>
-              </li>
-              <li
-                className={
-                  resource === "vehicles" ? listItemSelected : listItem
-                }
-              >
-                <Link href="/list/vehicles/1" className={link}>
-                  vehicles
-                </Link>
-              </li>
-              <li
-                className={resource === "species" ? listItemSelected : listItem}
-              >
-                <Link href="/list/species/1" className={link}>
-                  species
-                </Link>
-              </li>
-              <li
-                className={resource === "planets" ? listItemSelected : listItem}
-              >
-                <Link href="/list/planets/1" className={link}>
-                  planets
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div className="main__search flex flex-col">
+          <ResourceSelector resource={resource} />
+
+          <div className="main__search flex flex-col mb-16">
             <label htmlFor="search" className="text-greentxt m-auto">
-              Search for a character
+              Search for a name
             </label>
             <input
               type="text"

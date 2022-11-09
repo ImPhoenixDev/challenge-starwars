@@ -28,7 +28,7 @@ export default function Results({ data }) {
   };
 
   return (
-    <div className="grid grid-cols-2 gap-4 p-6 bg-graybg ">
+    <div className="grid grid-cols-2 gap-4 p-6 bg-graybg">
       {data?.results.map((item) => {
         return (
           <Card
