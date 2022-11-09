@@ -34,39 +34,81 @@ export default function List({ data }) {
     setResponseToDisplay(data);
   }, [searchValue, data]);
 
+  const link = "w-full h-full flex flex-col items-center justify-center p-4";
+  const listItemSelected = "cursor-pointer border-solid border-2 border-greentxt shadow-sm shadow-greentxt rounded-md";
+  const listItem = "cursor-pointer border-solid border-2 border-lime  text-lime rounded-md";
+
   return (
     <div className="flex bg-gray-800 h-screen">
-    <div className="m-auto max-w-md overflow-scroll">
+      <div className="m-auto max-w-md overflow-scroll">
         <Head>
           <title>Starwars challenge</title>
           <meta name="description" content="SWAPI front-end proyect" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <main className="bg-blue-300">
-          <h1 className="title">Starwars api challenge</h1>
-          {resource && <h2 className="subtitle">Resource: {resource}</h2>}
-          <div className="resourcesOptions">
-            <ul>
-              <li>
-                <Link href="/list/people/1">
-                  <i className="swg swg-darthvader"></i> people
+        <main className="main bg-white h-screen">
+          <div className="main__info text-greentxt p-2">
+            <h1 className="text-3xl">Welcome to starwars api challenge</h1>
+
+            <p className="text-2xl">
+              Here you can search information from the universe of starwars
+            </p>
+            <p className="text-2xl">
+              Use the filters to select a category to search
+            </p>
+          </div>
+
+          <div className="resourcesOptions text-greentxt">
+            <ul className="grid grid-cols-3 grid-rows-3 gap-3 px-2">
+              <li className={resource ==="people" ? listItemSelected : listItem}>
+                <Link
+                  href="/list/people/1"
+                  className={link}
+                >
+                  <i className="swg swg-darthvader"></i>
+                  people
                 </Link>
               </li>
-              <li>
-                <Link href="/list/films/1">films</Link>
+              <li className={resource ==="films" ? listItemSelected : listItem}>
+                <Link
+                  href="/list/films/1"
+                  className={link}
+                >
+                  films
+                </Link>
               </li>
-              <li>
-                <Link href="/list/starships/1">starships</Link>
+              <li className={resource ==="starships" ? listItemSelected : listItem}>
+                <Link
+                  href="/list/starships/1"
+                  className={link}
+                >
+                  starships
+                </Link>
               </li>
-              <li>
-                <Link href="/list/vehicles/1">vehicles</Link>
+              <li className={resource ==="vehicles" ? listItemSelected : listItem}>
+                <Link
+                  href="/list/vehicles/1"
+                  className={link}
+                >
+                  vehicles
+                </Link>
               </li>
-              <li>
-                <Link href="/list/species/1">species</Link>
+              <li className={resource ==="species" ? listItemSelected : listItem}>
+                <Link
+                  href="/list/species/1"
+                  className={link}
+                >
+                  species
+                </Link>
               </li>
-              <li>
-                <Link href="/list/planets/1">planets</Link>
+              <li className={resource ==="planets" ? listItemSelected : listItem}>
+                <Link
+                  href="/list/planets/1"
+                  className={link}
+                >
+                  planets
+                </Link>
               </li>
             </ul>
           </div>
