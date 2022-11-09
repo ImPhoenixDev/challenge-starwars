@@ -7,22 +7,26 @@ import Results from "../results/Results";
 import { useRouter } from "next/router";
 import { fetchSwapi } from "../../scripts/fetchSwapi";
 
+
 export default function List({ data }) {
   const [responseToDisplay, setResponseToDisplay] = useState(data);
   const [searchValue, setSearchValue] = useState("");
-
 
   const router = useRouter();
   const resource = router.query.resources;
 
   useEffect(() => {
     if (searchValue !== "") {
-
       const type = router.query.type;
       const resource = router.query.resources;
 
       const fetchSearch = async () => {
-        const swapiResponse = await fetchSwapi(type, resource, null, searchValue);
+        const swapiResponse = await fetchSwapi(
+          type,
+          resource,
+          null,
+          searchValue
+        );
         setResponseToDisplay(swapiResponse);
       };
 
@@ -30,7 +34,6 @@ export default function List({ data }) {
     }
     setResponseToDisplay(data);
   }, [searchValue, data]);
-
 
   return (
     <div>
@@ -46,7 +49,9 @@ export default function List({ data }) {
         <div className="resourcesOptions">
           <ul>
             <li>
-              <Link href="/list/people/1">people</Link>
+              <Link href="/list/people/1">
+                <i className="swg swg-darthvader"></i> people
+              </Link>
             </li>
             <li>
               <Link href="/list/films/1">films</Link>
@@ -65,7 +70,6 @@ export default function List({ data }) {
             </li>
           </ul>
         </div>
-
         <label htmlFor="search">Search for a character</label>
         <input
           type="text"
