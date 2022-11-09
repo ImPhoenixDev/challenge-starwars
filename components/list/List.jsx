@@ -8,12 +8,12 @@ import { useRouter } from "next/router";
 import { fetchSwapi } from "../../scripts/fetchSwapi";
 
 /**
-  * This is the component for the list page
-  * here you can select a category and 
-  * see the results as a list
-  *
-  * @param {string} data - The current selected resource data
-  */
+ * This is the component for the list page
+ * here you can select a category and
+ * see the results as a list
+ *
+ * @param {string} data - The current selected resource data
+ */
 export default function List({ data }) {
   const [responseToDisplay, setResponseToDisplay] = useState(data);
   const [searchValue, setSearchValue] = useState("");
@@ -45,8 +45,10 @@ export default function List({ data }) {
   }, [searchValue, data]);
 
   const link = "w-full h-full flex flex-col items-center justify-center p-4";
-  const listItemSelected = "cursor-pointer border-solid border-2 border-greentxt shadow-sm shadow-greentxt rounded-md";
-  const listItem = "cursor-pointer border-solid border-2 border-lime  text-lime rounded-md";
+  const listItemSelected =
+    "cursor-pointer border-solid border-2 border-greentxt shadow-sm shadow-greentxt rounded-md";
+  const listItem =
+    "cursor-pointer border-solid border-2 border-lime  text-lime rounded-md";
 
   return (
     <div className="flex bg-gray-800 h-screen">
@@ -59,79 +61,81 @@ export default function List({ data }) {
 
         <main className="main bg-white h-screen">
           <div className="main__info text-greentxt p-2">
-            <h1 className="text-3xl">Welcome to starwars api challenge</h1>
+            <h1 className="text-2xl my-4">Welcome to starwars api challenge</h1>
 
-            <p className="text-2xl">
+            <p className="text-2xl my-4">
               Here you can search information from the universe of starwars
             </p>
-            <p className="text-2xl">
+            <p className="text-2xl my-4 font-semibold">
               Use the filters to select a category to search
             </p>
           </div>
 
           <div className="resourcesOptions text-greentxt">
             <ul className="grid grid-cols-3 grid-rows-3 gap-3 px-2">
-              <li className={resource ==="people" ? listItemSelected : listItem}>
-                <Link
-                  href="/list/people/1"
-                  className={link}
-                >
+              <li
+                className={resource === "people" ? listItemSelected : listItem}
+              >
+                <Link href="/list/people/1" className={link}>
                   <i className="swg swg-darthvader"></i>
                   people
                 </Link>
               </li>
-              <li className={resource ==="films" ? listItemSelected : listItem}>
-                <Link
-                  href="/list/films/1"
-                  className={link}
-                >
+              <li
+                className={resource === "films" ? listItemSelected : listItem}
+              >
+                <Link href="/list/films/1" className={link}>
                   films
                 </Link>
               </li>
-              <li className={resource ==="starships" ? listItemSelected : listItem}>
-                <Link
-                  href="/list/starships/1"
-                  className={link}
-                >
+              <li
+                className={
+                  resource === "starships" ? listItemSelected : listItem
+                }
+              >
+                <Link href="/list/starships/1" className={link}>
                   starships
                 </Link>
               </li>
-              <li className={resource ==="vehicles" ? listItemSelected : listItem}>
-                <Link
-                  href="/list/vehicles/1"
-                  className={link}
-                >
+              <li
+                className={
+                  resource === "vehicles" ? listItemSelected : listItem
+                }
+              >
+                <Link href="/list/vehicles/1" className={link}>
                   vehicles
                 </Link>
               </li>
-              <li className={resource ==="species" ? listItemSelected : listItem}>
-                <Link
-                  href="/list/species/1"
-                  className={link}
-                >
+              <li
+                className={resource === "species" ? listItemSelected : listItem}
+              >
+                <Link href="/list/species/1" className={link}>
                   species
                 </Link>
               </li>
-              <li className={resource ==="planets" ? listItemSelected : listItem}>
-                <Link
-                  href="/list/planets/1"
-                  className={link}
-                >
+              <li
+                className={resource === "planets" ? listItemSelected : listItem}
+              >
+                <Link href="/list/planets/1" className={link}>
                   planets
                 </Link>
               </li>
             </ul>
           </div>
-          <label htmlFor="search">Search for a character</label>
-          <input
-            type="text"
-            id="search"
-            name="search"
-            onChange={(e) => {
-              setSearchValue(e.target.value);
-            }}
-          />
-          <button>Search</button>
+          <div className="main__search flex flex-col">
+            <label htmlFor="search" className="text-greentxt m-auto">
+              Search for a character
+            </label>
+            <input
+              type="text"
+              id="search"
+              name="search"
+              className="m-auto bg-white border-solid border-2 border-greentxt text-greentxt rounded-md p-2"
+              onChange={(e) => {
+                setSearchValue(e.target.value);
+              }}
+            />
+          </div>
         </main>
 
         <Results data={responseToDisplay} />
