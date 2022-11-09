@@ -11,11 +11,13 @@ export default function List({ data }) {
   const [responseToDisplay, setResponseToDisplay] = useState(data);
   const [searchValue, setSearchValue] = useState("");
 
+
   const router = useRouter();
   const resource = router.query.resources;
 
   useEffect(() => {
     if (searchValue !== "") {
+
       const type = router.query.type;
       const resource = router.query.resources;
 
@@ -26,7 +28,9 @@ export default function List({ data }) {
 
       fetchSearch().catch((err) => console.log(err));
     }
-  }, [searchValue]);
+    setResponseToDisplay(data);
+  }, [searchValue, data]);
+
 
   return (
     <div>
@@ -59,8 +63,6 @@ export default function List({ data }) {
             <li>
               <Link href="/list/planets/1">planets</Link>
             </li>
-            <li>vehicles</li>
-            <li>starships</li>
           </ul>
         </div>
 
@@ -70,7 +72,6 @@ export default function List({ data }) {
           id="search"
           name="search"
           onChange={(e) => {
-            console.log(e.target.value);
             setSearchValue(e.target.value);
           }}
         />

@@ -12,14 +12,14 @@ export async function getServerSideProps(context) {
   return {
     props: {
       data,
-      resource,
     },
   };
 }
 
-export default function Index({ data, resource }) {
+export default function Index({ data }) {
+
   return (
-      <List data={data} resource={resource} />
+      <List data={data} />
   );
 }
 
