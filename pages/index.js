@@ -5,7 +5,7 @@ import {fetchSwapi} from "../scripts/fetchSwapi";
 
 export async function getServerSideProps() {
 
-  const data = await fetchSwapi("list", 'films', );
+  const data = await fetchSwapi("list", 'films','1' );
   return {
     props: {
       data,

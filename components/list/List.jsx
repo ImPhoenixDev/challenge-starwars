@@ -1,16 +1,32 @@
-import React, {useState} from "react";
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import PropTypes from "prop-types";
 import Link from "next/link";
 import Results from "../results/Results";
 
 import { useRouter } from "next/router";
+import { fetchSwapi } from "../../scripts/fetchSwapi";
 
 export default function List({ data }) {
-  const [responseToDisplay] = useState(data);
+  const [responseToDisplay, setResponseToDisplay] = useState(data);
+  const [searchValue, setSearchValue] = useState("");
 
   const router = useRouter();
-  const resource  = router.query.resources;
+  const resource = router.query.resources;
+
+  useEffect(() => {
+    if (searchValue !== "") {
+      const type = router.query.type;
+      const resource = router.query.resources;
+
+      const fetchSearch = async () => {
+        const swapiResponse = await fetchSwapi(type, resource, null, searchValue);
+        setResponseToDisplay(swapiResponse);
+      };
+
+      fetchSearch().catch((err) => console.log(err));
+    }
+  }, [searchValue]);
 
   return (
     <div>
@@ -49,7 +65,15 @@ export default function List({ data }) {
         </div>
 
         <label htmlFor="search">Search for a character</label>
-        <input type="text" id="search" name="search" />
+        <input
+          type="text"
+          id="search"
+          name="search"
+          onChange={(e) => {
+            console.log(e.target.value);
+            setSearchValue(e.target.value);
+          }}
+        />
         <button>Search</button>
       </main>
 
