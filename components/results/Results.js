@@ -1,12 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useRouter } from "next/router";
+import Card from "../card/Card";
 
 /**
  * Results component render the given response from the api
  * pass the data to render the results.
  *
- * The component automatically identify the type of the resource 
+ * The component automatically identify the type of the resource
  * and will select the right title.
  *
  * @param {Object} apiResponse - The response from the api call
@@ -26,14 +27,16 @@ export default function Results({ data }) {
     planets: { title: "name" },
   };
 
-  
   return (
-    <div>
+    <div className="grid grid-cols-2 gap-4 p-6 bg-graybg ">
       {data?.results.map((item) => {
         return (
-          <div key={item[resourceOptions[name].title]}>
-            <a href={item.url} target="__blank">{item[resourceOptions[name].title]}</a>
-          </div>
+          <Card
+            title={item[resourceOptions[name].title]}
+            icon={name}
+            url={item.url}
+            key={item[resourceOptions[name].title]}
+          />
         );
       })}
     </div>
