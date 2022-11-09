@@ -7,6 +7,13 @@ import Results from "../results/Results";
 import { useRouter } from "next/router";
 import { fetchSwapi } from "../../scripts/fetchSwapi";
 
+/**
+  * This is the component for the list page
+  * here you can select a category and 
+  * see the results as a list
+  *
+  * @param {string} data - The current selected resource data
+  */
 export default function List({ data }) {
   const [responseToDisplay, setResponseToDisplay] = useState(data);
   const [searchValue, setSearchValue] = useState("");
@@ -15,6 +22,7 @@ export default function List({ data }) {
   const resource = router.query.resources;
 
   useEffect(() => {
+    // If the user is searching for something
     if (searchValue !== "") {
       const type = router.query.type;
       const resource = router.query.resources;
@@ -31,6 +39,8 @@ export default function List({ data }) {
 
       fetchSearch().catch((err) => console.log(err));
     }
+
+    // If the user changes the resource refresh the state data
     setResponseToDisplay(data);
   }, [searchValue, data]);
 
