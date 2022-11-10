@@ -11,7 +11,6 @@ import PropTypes from "prop-types";
  *
  **/
 export default function Card({ title, icon, url }) {
-  console.log(icon);
 
   const icons = {
     people: "swg-darthvader",

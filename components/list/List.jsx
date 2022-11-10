@@ -7,6 +7,7 @@ import Results from "../results/Results";
 import { useRouter } from "next/router";
 import { fetchSwapi } from "../../scripts/fetchSwapi";
 import ResourceSelector from "../resourceSelector/ResourceSelector";
+import Pagination from "../pagination/Pagination";
 
 /**
  * This is the component for the list page
@@ -56,7 +57,9 @@ export default function List({ data }) {
 
         <main className="main bg-white min-h-max">
           <div className="main__info text-greentxt p-2">
-            <h1 className="text-4xl my-16 text-center">Welcome to starwars api challenge</h1>
+            <h1 className="text-4xl my-16 text-center">
+              Welcome to starwars api challenge
+            </h1>
 
             <p className="text-2xl my-4">
               Here you can search information from the universe of starwars
@@ -85,6 +88,13 @@ export default function List({ data }) {
         </main>
 
         <Results data={responseToDisplay} />
+
+        <Pagination
+          prev={
+            responseToDisplay?.previous ? responseToDisplay?.previous : false
+          }
+          next={responseToDisplay?.next ? responseToDisplay?.next : false}
+        />
       </div>
     </div>
   );
