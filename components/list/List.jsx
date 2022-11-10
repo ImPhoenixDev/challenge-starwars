@@ -54,11 +54,12 @@ export default function List({ data }) {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <main className="main bg-white min-h-max">
-          <div className="main__info text-greentxt p-2">
-            <h1 className="text-4xl my-16 text-center">
+        <main className="main bg-white min-h-max px-8">
+          <div className="main__info flex flex-col text-greentxt p-2">
+            <h1 className="text-4xl text-center mt-16">
               Welcome to starwars api challenge
             </h1>
+            <small className="text-center text-lime m-auto mt-4 mb-16">May the force be with you</small>
 
             <p className="text-2xl my-4">
               Here you can search information from the universe of starwars
