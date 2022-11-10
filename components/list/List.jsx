@@ -49,8 +49,8 @@ export default function List({ data }) {
     <div className="flex bg-gray-800">
       <div className="flex flex-col m-auto max-w-md overflow-scroll">
         <Head>
-          <title>Starwars challenge</title>
-          <meta name="description" content="SWAPI front-end proyect" />
+          <title>List of {resource}</title>
+          <meta name="description" content={`List of ${resource}`} />
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
