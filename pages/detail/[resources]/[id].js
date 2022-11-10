@@ -4,6 +4,7 @@ import Head from "next/head";
 
 import { fetchSwapi } from "../../../scripts/fetchSwapi";
 import iconsNames from "../../../utils/starwars-glyphicons/iconsNames";
+import DetailInfo from "../../../components/detailInfo/DetailInfo";
 
 export async function getServerSideProps(context) {
   const { resources, id } = context.query;
@@ -30,14 +31,21 @@ export default function Detail({ data, resources }) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
+  let title = "";
+  if (resources !== "films") {
+    title = data.name;
+  } else {
+    title = data.title;
+  }
+
   return (
     <div className="flex bg-gray-800">
       <div className="flex flex-col m-auto max-w-md overflow-scroll">
         <Head>
-          <title>{data.name ? data.name : ""}</title>
+          <title>{title}</title>
           <meta
             name="description"
-            content={`Detailed description of: ${data.name}`}
+            content={`Detailed description of: ${title}`}
           />
           <link rel="icon" href="/favicon.ico" />
         </Head>
@@ -50,16 +58,14 @@ export default function Detail({ data, resources }) {
           </div>
           <div className="main-info flex flex-col text-greentxt mb-16">
             <h1 className="main-info__title m-auto mt-16 py-8 w-2/3 text-center border-y-4 border-solid border-greentxt">
-              {data.name}
+              {title}
             </h1>
-            <h2 className="main-info__sub-title m-auto mt-2  text-center">
+            <h2 className="main-info__sub-title m-auto mt-2  text-center text-sm">
               Belongs to category: {firstLetterToUpperCase(resources)}
             </h2>
           </div>
           <div className="specific-info">
-            {
-              //component
-            }
+            <DetailInfo data={data} resource={resources} />
           </div>
         </main>
       </div>
