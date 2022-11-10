@@ -42,14 +42,16 @@ export default function Detail({ data, resources }) {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-    <main className="main flex flex-col bg-white min-h-max w-screen lg:max-w-md">
-          <div className="main__icon m-auto border-solid border-2 border-greentxt p-4 shadow-lg rounded-br-lg">
+        <main className="main flex flex-col bg-white min-h-max w-screen lg:max-w-md">
+          <div className="main__icon m-auto mt-16 border-solid border-2 border-greentxt p-4 shadow-lg rounded-br-lg">
             <i
-    className={`swg ${iconsNames[resources]} swg-6x text-greentxt hover:rotate-180 transition-all duration-500`}
+              className={`swg ${iconsNames[resources]} swg-6x text-greentxt hover:rotate-180 transition-all duration-500`}
             ></i>
           </div>
           <div className="main-info flex flex-col text-greentxt mb-16">
-            <h1 className="main-info__title m-auto mt-16 py-8 w-2/3 text-center border-y-4 border-solid border-greentxt">{data.name}</h1>
+            <h1 className="main-info__title m-auto mt-16 py-8 w-2/3 text-center border-y-4 border-solid border-greentxt">
+              {data.name}
+            </h1>
             <h2 className="main-info__sub-title m-auto mt-2  text-center">
               Belongs to category: {firstLetterToUpperCase(resources)}
             </h2>
@@ -60,7 +62,6 @@ export default function Detail({ data, resources }) {
             }
           </div>
         </main>
-
       </div>
     </div>
   );
