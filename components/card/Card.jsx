@@ -11,7 +11,6 @@ import PropTypes from "prop-types";
  *
  **/
 export default function Card({ title, icon, url }) {
-
   const icons = {
     people: "swg-darthvader",
     films: "swg-40starwars",
@@ -19,16 +18,16 @@ export default function Card({ title, icon, url }) {
     vehicles: "swg-landspeeder",
     species: "swg-porg-2",
     planets: "swg-deathstar",
-  }
+  };
 
   return (
     <div className="card">
       <div className="grid grid-cols-1 max-w-sm min-h-full p-4 bg-white rounded-lg border border-gray-200 shadow-lg">
-        <a href="#">
+        <a href={url}>
           <i className={`swg ${icons[icon]} swg-6x text-greentxt`}></i>
         </a>
         <div className="flex flex-col justify-evenly">
-          <a href="#">
+          <a href={url}>
             <h5 className="mb-2 text-2xl font-bold tracking-tight text-greentxt">
               {title}
             </h5>
