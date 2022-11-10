@@ -27,6 +27,11 @@ export default function Results({ data }) {
     planets: { title: "name" },
   };
 
+  function getIdFromUrl(url) {
+    url = url.match(/\d+/)[0];
+    return url;
+  }
+
   return (
     <div className="grid grid-cols-2 gap-4 p-6 bg-graybg">
       {data?.results.map((item) => {
@@ -34,7 +39,7 @@ export default function Results({ data }) {
           <Card
             title={item[resourceOptions[name].title]}
             icon={name}
-            url={item.url}
+            url={`/detail/${name}/${getIdFromUrl(item.url)}`}
             key={item[resourceOptions[name].title]}
           />
         );
