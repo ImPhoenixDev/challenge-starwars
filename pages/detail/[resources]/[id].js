@@ -5,6 +5,7 @@ import Head from "next/head";
 import { fetchSwapi } from "../../../scripts/fetchSwapi";
 import iconsNames from "../../../utils/starwars-glyphicons/iconsNames";
 import DetailInfo from "../../../components/detailInfo/DetailInfo";
+import { useRouter } from "next/router";
 
 export async function getServerSideProps(context) {
   const { resources, id } = context.query;
@@ -24,8 +25,7 @@ export async function getServerSideProps(context) {
  * @param {Object} data - Data to render fetched from the API
  */
 export default function Detail({ data, resources }) {
-  // pass data to component specific of each resource
-  console.log(data);
+  const router = useRouter();
 
   function firstLetterToUpperCase(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -68,6 +68,15 @@ export default function Detail({ data, resources }) {
             <DetailInfo data={data} resource={resources} />
           </div>
         </main>
+        <footer className="flex py-8">
+          <button
+            type="button"
+            className="px-8 py-4 m-auto text-lime border-solid border border-lime rounded-lg hover:bg-lime hover:text-greentxt transition-all transition-500"
+            onClick={() => router.back()}
+          >
+            Go back to category list
+          </button>
+        </footer>
       </div>
     </div>
   );
