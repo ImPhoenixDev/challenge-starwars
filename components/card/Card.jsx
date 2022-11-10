@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import iconsNames from "../../utils/starwars-glyphicons/iconsNames";
 
 /**
  * Render a card with the given data
@@ -11,20 +12,11 @@ import PropTypes from "prop-types";
  *
  **/
 export default function Card({ title, icon, url }) {
-  const icons = {
-    people: "swg-darthvader",
-    films: "swg-40starwars",
-    starships: "swg-falcon",
-    vehicles: "swg-landspeeder",
-    species: "swg-porg-2",
-    planets: "swg-deathstar",
-  };
-
   return (
     <div className="card">
       <div className="grid grid-cols-1 max-w-sm min-h-full p-4 bg-white rounded-lg border border-gray-200 shadow-lg">
         <a href={url}>
-          <i className={`swg ${icons[icon]} swg-6x text-greentxt`}></i>
+          <i className={`swg ${iconsNames[icon]} swg-6x text-greentxt`}></i>
         </a>
         <div className="flex flex-col justify-evenly">
           <a href={url}>
