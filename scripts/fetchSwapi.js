@@ -27,7 +27,7 @@ export async function fetchSwapi(type, resource, idOrPage, searchValue) {
   }
 
   //define data to fetch
-  const urlBase = `https://swapi.dev/api/`;
+  const urlBase = `https://swapi.py4e.com/api/`;
   let urlDetail = ``;
 
   if (searchValue) {
